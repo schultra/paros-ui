@@ -1,0 +1,12 @@
+<br><br><br>
+
+<div>
+ <label> comment :
+   <input [(ngModel)]='newComment' placeholder="comment"/>
+ </label>
+&nbsp;&nbsp;<button (click)="save()">add</button>
+</div>
+
+<li *ngFor="let item of items">
+<span>{{item.lib}}</span>
+</li>
