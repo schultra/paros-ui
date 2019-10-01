@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentItem } from '../comment-item';
+import { CommentService } from '../comment.service';
+
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
 export class CommentsComponent implements OnInit {
-  newComment = 'toto';
-  items : CommentItem[] = [
-    {id: 1, lib: 'foo'},
-    {id: 2, lib: 'bar'},
-    {id: 3, lib: 'toto'}
-  ];
+  newComment = '';
+  items : CommentItem[];
 
-  constructor() { }
+  constructor(private commentService: CommentService) { }
 
   ngOnInit() {
+	this.items = this.commentService.displayComment();
   }
 
   save() : void{
