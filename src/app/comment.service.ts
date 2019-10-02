@@ -11,7 +11,7 @@ import { catchError, map, tap} from 'rxjs/operators';
 export class CommentService {
 
 
-  private wsUrl = 'http://localhost:3000/comments';
+  private wsUrl = 'https://paros-ws.herokuapp.com/comments';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
