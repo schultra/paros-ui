@@ -14,7 +14,8 @@ export class CommentsComponent implements OnInit {
   constructor(private commentService: CommentService) { }
 
   ngOnInit() {
-	this.items = this.commentService.displayComment();
+       this.commentService.displayComment().
+         subscribe(items => this.items = items);
   }
 
   save() : void{
