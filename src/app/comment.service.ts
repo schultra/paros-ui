@@ -27,6 +27,14 @@ export class CommentService {
         );
   }
 
+  addComment(comment: CommentItem) : Observable<CommentItem> {
+    return this.http.post<CommentItem>(this.wsUrl, comment, this.httpOptions)
+        .pipe(
+      	  tap((newComment:CommentItem) => this.log('added infos ...')),
+          catchError(this.handleError<CommentItem>('addComment'))
+        );
+  }
+
   private handleError<T>(operation = 'operation', result?:T){
     return (error: any): Observable<T> => {
 	console.error(error);

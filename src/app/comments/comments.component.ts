@@ -14,13 +14,25 @@ export class CommentsComponent implements OnInit {
   constructor(private commentService: CommentService) { }
 
   ngOnInit() {
+     this.refreshList();
+  }
+
+  save() : void{
+    let len = (this.items == null) ? 0 : this.items.length;
+    let item = new CommentItem(len+1, this.newComment);
+    this.addComment(item);
+    this.refreshList();
+  }
+
+
+  private refreshList(){
        this.commentService.displayComment().
          subscribe(items => this.items = items);
   }
 
-  save() : void{
-    let item = new CommentItem(this.newComment);
-    this.items.push(item);
+  private addComment(item: CommentItem){
+       this.commentService.addComment(item).
+	 subscribe(item => this.items.push(item));
   }
 
 }
